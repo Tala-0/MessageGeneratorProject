@@ -13,7 +13,7 @@ message.planets = [
 message.energies = [
   "tired",
   "happy",
-  "fast",
+  "energized",
   "slow",
   "athletic",
   "comfy",
@@ -34,7 +34,20 @@ message.tasks = [
 
 function generateMessage() {
   let pt1 =
-    "The moon is in " + Math.floor(Math.random() * message.planets.length);
+    "The moon is in " +
+    message.planets[Math.floor(Math.random() * message.planets.length)];
+
+  let pt2 =
+    "You may feel " +
+    message.energies[Math.floor(Math.random() * message.energies.length)];
+
+  let pt3 =
+    "You may want to " +
+    message.tasks[Math.floor(Math.random() * message.tasks.length)];
+
+  let msg = pt1 + "\n" + pt2 + "\n" + pt3;
+
+  return msg;
 }
 
 // Create a button element
@@ -49,8 +62,9 @@ button.id = "mainButton";
 button.addEventListener("click", () => {
   // When there is a "click"
   // it shows an alert in the browser
-  alert("Oh, you clicked me!");
+
+  const msg = generateMessage();
+  alert(msg);
 });
 
 document.body.appendChild(button);
-("J");
